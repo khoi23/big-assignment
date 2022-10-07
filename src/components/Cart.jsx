@@ -13,7 +13,7 @@ import {
     setGetTotals,
 } from "../app/CartSlice";
 
-const Cart = ({ listProduct }) => {
+const Cart = () => {
     const dispatch = useDispatch();
     const ifCartState = useSelector(selectCartState);
     const cartItems = useSelector(selectCartItems);

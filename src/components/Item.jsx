@@ -5,10 +5,14 @@ import { setAddItemToCart } from "../app/CartSlice";
 const Item = ({ image, id, name, description, price }) => {
     const dispatch = useDispatch();
 
-    const [itemValue, setItemValue] = useState(1);
+    const [cartQuantity, setCartQuantity] = useState(1);
+
+    const resetButton = () => {
+        setCartQuantity(1);
+    };
 
     const onAddToCart = () => {
-        const item = { image, id, name, description, price };
+        const item = { image, id, name, description, price, cartQuantity };
 
         dispatch(setAddItemToCart(item));
     };
@@ -36,16 +40,18 @@ const Item = ({ image, id, name, description, price }) => {
                             <input
                                 type={"number"}
                                 className="w-[40%] text-xl border-none py-2 px-4 outline-none drop-shadow-sm"
-                                value={itemValue}
-                                onChange={(e) => setItemValue(e.target.value)}
+                                value={cartQuantity}
+                                onChange={(e) =>
+                                    setCartQuantity(e.target.value)
+                                }
                             />
                         </div>
                         <div>
                             <button
                                 type="button"
                                 className=" py-2 px-8 bg-gradient-to-r from-red-500 to-orange-600 rounded-lg text-xl font-medium text-white"
-                                onClick={() => onAddToCart()}>
-                                +Add
+                                onClick={() => (onAddToCart(), resetButton())}>
+                                + Add
                             </button>
                         </div>
                     </div>

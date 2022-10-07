@@ -10,7 +10,7 @@ const CartItem = ({
 
     const onRemoveItem = () => {
         dispatch(
-            setIncreaseItemQTY({
+            setRemoveItemFromCart({
                 id,
                 image,
                 name,

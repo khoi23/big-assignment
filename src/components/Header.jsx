@@ -80,8 +80,8 @@ const Header = () => {
                                 <div
                                     className={`absolute top-4 right-0 shadow w-4 h-4 text-[0.65rem] leading-tight font-medium rounded-full flex items-center justify-center cursor-pointer hover:scale-110 transition-all duration-300 ${
                                         navState
-                                            ? "bg-slate-900 text-slate-100 shadow-slate-900"
-                                            : "bg-slate-100 text-slate-900 shadow-slate-100"
+                                            ? " bg-orange-600 text-slate-100 shadow-orange-600"
+                                            : "bg-slate-100 text-orange-600 shadow-slate-100"
                                     }`}>
                                     {totalAmout}
                                 </div>
