@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import {
     HeartIcon,
@@ -9,10 +9,11 @@ import {
 } from "@heroicons/react/24/solid";
 
 import logo from "../assets/react.svg";
-import { setOpenCart } from "../app/CartSlice";
+import { selectTotalAmount, setOpenCart } from "../app/CartSlice";
 
 const Header = () => {
     const [navState, setNavState] = useState(false);
+    const totalAmout = useSelector(selectTotalAmount);
 
     const dispatch = useDispatch();
 
@@ -82,7 +83,7 @@ const Header = () => {
                                             ? "bg-slate-900 text-slate-100 shadow-slate-900"
                                             : "bg-slate-100 text-slate-900 shadow-slate-100"
                                     }`}>
-                                    0
+                                    {totalAmout}
                                 </div>
                             </button>
                         </li>

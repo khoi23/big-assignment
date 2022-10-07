@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import CartItem from "./Cart/CartItem";
 import CartForm from "./Cart/CartForm";
 import CartEmpty from "./Cart/CartEmpty";
@@ -7,18 +7,27 @@ import { useDispatch, useSelector } from "react-redux";
 import {
     selectCartItems,
     selectCartState,
+    selectTotalAmount,
+    selectTotalQty,
     setCloseCart,
+    setGetTotals,
 } from "../app/CartSlice";
 
 const Cart = ({ listProduct }) => {
     const dispatch = useDispatch();
     const ifCartState = useSelector(selectCartState);
     const cartItems = useSelector(selectCartItems);
+    const cartQty = useSelector(selectTotalQty);
+    const totalAmout = useSelector(selectTotalAmount);
 
+    useEffect(() => {
+        dispatch(setGetTotals());
+    }, [cartItems, dispatch]);
     console.log(cartItems);
     const onCartToggle = () => {
         dispatch(setCloseCart({ cartState: false }));
     };
+
     return (
         <>
             <div
@@ -33,10 +42,13 @@ const Cart = ({ listProduct }) => {
                             ? "opacity-100 visible translate-x-0"
                             : "opacity-0 invisible translate-x-8"
                     }`}>
-                    <CartCount onCartToggle={onCartToggle} />
+                    <CartCount
+                        onCartToggle={onCartToggle}
+                        totalAmout={totalAmout}
+                    />
 
                     {cartItems.length === 0 ? (
-                        <CartEmpty onCartToggle={onCartToggle}/>
+                        <CartEmpty onCartToggle={onCartToggle} />
                     ) : (
                         <div>
                             <div
@@ -52,7 +64,7 @@ const Cart = ({ listProduct }) => {
                             <div className="flex items-start justify-between mb-2">
                                 <h5 className=" font-semibold">Subtotal:</h5>
                                 <span className="button-theme bg-slate-900 text-white">
-                                    $000
+                                    ${Math.floor(cartQty)}
                                 </span>
                             </div>
                         </div>
