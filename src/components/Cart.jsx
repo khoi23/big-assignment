@@ -20,10 +20,10 @@ const Cart = () => {
     const cartQty = useSelector(selectTotalQty);
     const totalAmout = useSelector(selectTotalAmount);
 
+
     useEffect(() => {
         dispatch(setGetTotals());
     }, [cartItems, dispatch]);
-    console.log(cartItems);
     const onCartToggle = () => {
         dispatch(setCloseCart({ cartState: false }));
     };
@@ -71,16 +71,7 @@ const Cart = () => {
                     )}
 
                     <CartForm />
-                    <div className="flex justify-end gap-4">
-                        <button
-                            className="py-2 px-8 rounded border-orange-600 border-2 hover:bg-orange-600 hover:text-white hover:-translate-y-1 duration-300"
-                            onClick={onCartToggle}>
-                            Close
-                        </button>
-                        <button className="py-2 px-8 rounded bg-orange-600 text-white hover:-translate-y-1 duration-300">
-                            Order
-                        </button>
-                    </div>
+
                 </div>
             </div>
         </>
