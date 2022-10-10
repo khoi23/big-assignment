@@ -20,7 +20,6 @@ const Cart = () => {
     const cartQty = useSelector(selectTotalQty);
     const totalAmout = useSelector(selectTotalAmount);
 
-
     useEffect(() => {
         dispatch(setGetTotals());
     }, [cartItems, dispatch]);

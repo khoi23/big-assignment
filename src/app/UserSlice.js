@@ -2,7 +2,6 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     userState: false,
-    
 };
 
 const UserSlice = createSlice({
@@ -11,7 +10,6 @@ const UserSlice = createSlice({
     reducers: {
         setConfirm: (state, action) => {
             state.userState = action.payload.userState;
-            console.log(state.userState);
         },
     },
 });
