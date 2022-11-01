@@ -5,10 +5,10 @@ import { setAddItemToCart } from "../app/CartSlice";
 const Item = ({ image, id, name, description, price }) => {
     const dispatch = useDispatch();
 
-    const [cartQuantity, setCartQuantity] = useState(1);
+    const [cartQuantity, setCartQuantity] = useState(Number(1));
 
     const resetButton = () => {
-        setCartQuantity(1);
+        setCartQuantity(Number(1));
     };
 
     const onAddToCart = () => {

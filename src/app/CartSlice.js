@@ -28,8 +28,9 @@ const CartSlice = createSlice({
             );
 
             if (itemIndex >= 0) {
-                state.cartItems[itemIndex].cartQuantity +=
-                    +action.payload.cartQuantity;
+                state.cartItems[itemIndex].cartQuantity += Number(
+                    action.payload.cartQuantity
+                );
 
                 toast.success(`${action.payload.name} QTY increased`);
             } else {
@@ -59,7 +60,7 @@ const CartSlice = createSlice({
             );
 
             if (itemIndex >= 0) {
-                state.cartItems[itemIndex].cartQuantity += 1;
+                state.cartItems[itemIndex].cartQuantity += Number(1);
 
                 toast.success(`Item ${action.payload.title} Increased`);
             }
@@ -100,7 +101,7 @@ const CartSlice = createSlice({
                     const { price, cartQuantity } = cartItem;
                     const totalPrice = price * cartQuantity;
 
-                    cartTotal.totalAmount += cartQuantity;
+                    cartTotal.totalAmount += Number(cartQuantity);
                     cartTotal.totalQTY += totalPrice;
 
                     return cartTotal;
