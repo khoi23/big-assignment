@@ -24,6 +24,8 @@ const CartForm = () => {
 
     const [dataSubmit, setDataSubmit] = useState({});
 
+    const cartItems = useSelector(selectCartItems);
+
     const ifButtonCofirm = useSelector(selectSetConfirm);
 
     const cartState = useSelector(selectCartState);
@@ -44,8 +46,6 @@ const CartForm = () => {
     const handleBtnOrder = () => {
         dispatch(setConfirm({ userState: true }));
     };
-
-    const cartItems = useSelector(selectCartItems);
 
     const cartQty = useSelector(selectTotalQty);
     const [buttonS, setButtonS] = useState(false);
@@ -202,7 +202,7 @@ const CartForm = () => {
 
             <div className="flex justify-end gap-4 mt-5">
                 <button
-                    className="py-2 px-8 rounded border-orange-600 border-2 hover:bg-orange-600 hover:text-white hover:-translate-y-1 duration-300"
+                    className="py-2 px-8 rounded border-orange-600 border-2 hover:bg-orange-600 hover:text-white hover:-translate-y-1 duration-300 "
                     onClick={onCartToggle}>
                     Close
                 </button>

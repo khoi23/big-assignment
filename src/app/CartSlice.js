@@ -28,9 +28,8 @@ const CartSlice = createSlice({
             );
 
             if (itemIndex >= 0) {
-                state.cartItems[itemIndex].cartQuantity += +(
-                    action.payload.cartQuantity
-                );
+                state.cartItems[itemIndex].cartQuantity +=
+                    +action.payload.cartQuantity;
 
                 toast.success(`${action.payload.name} QTY increased`);
             } else {
@@ -121,7 +120,6 @@ const CartSlice = createSlice({
 export const {
     setOpenCart,
     setCloseCart,
-    setItemQty,
     setAddItemToCart,
     setRemoveItemFromCart,
     setIncreaseItemQTY,

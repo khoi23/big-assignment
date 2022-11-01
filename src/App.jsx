@@ -16,7 +16,7 @@ const App = () => {
         axios
             .get("https://625a91bf0ab4013f94a2d9a8.mockapi.io/meals")
             .then(({ data }) => {
-                setListProduct(data);
+                setListProduct(data.slice(0, 4));
             })
             .catch((error) => console.log(error));
     }, []);
